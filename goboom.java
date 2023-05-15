@@ -9,13 +9,26 @@ public class goboom {
         Scanner input = new Scanner(System.in);
         List<String> deck = createDeck();       //init. create deck method
         Collections.shuffle(deck);              //shuffle deck
-
+        
         // Deal cards to players
         List<List<String>> players = new ArrayList<>();
         for (int i = 0; i < 4; i++) {
             players.add(new ArrayList<>());
         }
 
+        int command;
+        do {
+        System.out.println("Trick #1");
+        for (int i = 0; i < 4; i++) {
+        System.out.println("Player" + (i+1) + ": " + players.get(i));
+        }
+        System.out.println("Deck : " + deck);
+        System.out.println("Score: Player1 = 0 | Player2 = 0 | Player3 = 0 | Player4 = 0");
+        System.out.print("> ");
+            command = input.nextInt();
+
+        } while (command != 0);
+        //area sini
     }
 
     //create deck
