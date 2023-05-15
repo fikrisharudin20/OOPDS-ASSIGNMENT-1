@@ -54,5 +54,35 @@ public class goboom {
 
         return deck;
     }
+
+    //firstplayer method
+    public static int getFirstPlayer(String card) {
+        int firstPlayer = 0;
+        char rank = card.charAt(1);
+        switch (rank) {
+            case 'A':
+            case '5':
+            case '9':
+            case 'K':
+                firstPlayer = 1;
+                break;
+            case '2':
+            case '6':
+            case 'X':
+                firstPlayer = 2;
+                break;
+            case '3':
+            case '7':
+            case 'J':
+                firstPlayer = 3;
+                break;
+            case '4':
+            case '8':
+            case 'Q':
+                firstPlayer = 4;
+                break;
+        }
+        return firstPlayer;
+    }
     
 }
