@@ -38,6 +38,7 @@ public class goboom {
         System.out.println("Center : [" + centerCard + "]");
         System.out.println("Deck : " + deck);
         System.out.println("Score: Player1 = 0 | Player2 = 0 | Player3 = 0 | Player4 = 0");
+        System.out.println("Turn : Player" + firstPlayer);
         System.out.print("> ");
             command = input.nextInt();
 
