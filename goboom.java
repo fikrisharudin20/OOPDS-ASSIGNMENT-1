@@ -10,6 +10,12 @@ public class goboom {
         List<String> deck = createDeck();       //init. create deck method
         Collections.shuffle(deck);              //shuffle deck
 
+        // Deal cards to players
+        List<List<String>> players = new ArrayList<>();
+        for (int i = 0; i < 4; i++) {
+            players.add(new ArrayList<>());
+        }
+
     }
 
     //create deck
