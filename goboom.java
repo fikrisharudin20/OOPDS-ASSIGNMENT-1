@@ -16,6 +16,13 @@ public class goboom {
             players.add(new ArrayList<>());
         }
 
+         //distributes cards from deck to each player
+         for (int i = 0; i < 7; i++) {
+            for (int j = 0; j < 4; j++) {
+                players.get(j).add(deck.remove(0));
+            }
+        }
+
         int command;
         do {
         System.out.println("Trick #1");
