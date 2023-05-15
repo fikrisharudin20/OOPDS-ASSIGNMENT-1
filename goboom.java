@@ -10,8 +10,12 @@ public class goboom {
         List<String> deck = createDeck();       //init. create deck method
         Collections.shuffle(deck);              //shuffle deck
         
+        // Assign center card
+        String centerCard = deck.remove(0);
+        System.out.println("Center card: " + centerCard);
+        int firstPlayer = getFirstPlayer(centerCard);
+        System.out.println("First player: Player" + firstPlayer);
 
-        
         // Deal cards to players
         List<List<String>> players = new ArrayList<>();
         for (int i = 0; i < 4; i++) {
@@ -31,6 +35,7 @@ public class goboom {
         for (int i = 0; i < 4; i++) {
         System.out.println("Player" + (i+1) + ": " + players.get(i));
         }
+        System.out.println("Center : [" + centerCard + "]");
         System.out.println("Deck : " + deck);
         System.out.println("Score: Player1 = 0 | Player2 = 0 | Player3 = 0 | Player4 = 0");
         System.out.print("> ");
