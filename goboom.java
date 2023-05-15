@@ -5,5 +5,26 @@ import java.util.Random;
 import java.util.Scanner;
 
 public class goboom {
+    public static void main(String[] args) {
+        Scanner input = new Scanner(System.in);
+        List<String> deck = createDeck();       //init. create deck method
+        Collections.shuffle(deck);              //shuffle deck
+
+    }
+
+    //create deck
+    public static List<String> createDeck() {
+        List<String> deck = new ArrayList<>();
+        String[] suits = {"c", "d", "h", "s"};
+        String[] ranks = {"2", "3", "4", "5", "6", "7", "8", "9", "X", "J", "Q", "K", "A"};
+
+        for (String suit : suits) {
+            for (String rank : ranks) {
+                deck.add(suit + rank);
+            }
+        }
+
+        return deck;
+    }
     
 }
