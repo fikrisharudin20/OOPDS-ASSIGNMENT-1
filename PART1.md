@@ -2,12 +2,12 @@
 
 ## A. Member Contributions
 
-No | ID         | Name | Task descriptions | Contribution %
--- | ---------- | ---- | ----------------- | --------------
-1  | 1221302093 | Ahmad Fikri Bin Sharudin     |                   |
-2  |            |      |                   |
-3  |            |      |                   |
-4  |            |      |                   |
+No | ID         | Name | Task descriptions          | Contribution %
+-- | ---------- | ---- | -------------------------- | -------------- |
+1  | 1221302093 | Ahmad Fikri Bin Sharudin          |                |
+2  | 1211104904 | Emeer Aneeq Bin Mohammad Jeffery  |                |
+3  |            |      |                            |
+4  |            |      |                            |
 
 
 ## B. Feature Completion
