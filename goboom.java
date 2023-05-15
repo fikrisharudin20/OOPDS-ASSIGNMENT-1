@@ -31,7 +31,6 @@ public class goboom {
         for (int i = 0; i < 4; i++) {
         System.out.println("Player" + (i+1) + ": " + players.get(i));
         }
-        
         System.out.println("Deck : " + deck);
         System.out.println("Score: Player1 = 0 | Player2 = 0 | Player3 = 0 | Player4 = 0");
         System.out.print("> ");
