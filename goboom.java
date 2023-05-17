@@ -11,10 +11,9 @@ public class goboom {
         Collections.shuffle(deck);              //shuffle deck
         
         // Assign center card
-        String centerCard = deck.remove(0);
-        System.out.println("Center card: " + centerCard);
+        String centerCard = deck.remove(0);  
         int firstPlayer = getFirstPlayer(centerCard);
-        System.out.println("First player: Player" + firstPlayer);
+        
 
         // Deal cards to players
         List<List<String>> players = new ArrayList<>();
