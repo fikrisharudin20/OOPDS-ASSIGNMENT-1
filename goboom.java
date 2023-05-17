@@ -62,6 +62,21 @@ public class goboom {
                 // Increment trick number
                 trickNumber++;
             } 
+            else if (center.size() == 4 && trickNumber >= 2)
+               {
+                //leading card for trick 2 and above
+                 String leadcard = center.get(0);
+                 System.out.println("leading card: " + leadcard);
+                String winningCard = getWinningCard2(center, leadcard);
+                int winningPlayer = (currentPlayer + center.indexOf(winningCard)) % 4 + 1;
+                System.out.println(" Player" + winningPlayer + " wins Trick #" + trickNumber + " ");
+                System.out.println("Winning Card: " + winningCard);
+                leadcard = winningCard;
+                center.clear();
+                currentPlayer = winningPlayer;
+
+                trickNumber++;
+               }
             
             else {
 
