@@ -94,6 +94,19 @@ public class goboom {
         }
         return firstPlayer;
     }
+
+    //get the winning card from the center pile for first trick
+    public static String getWinningCard1(List<String> center, String centerCard) {
+    String winningCard = center.get(0);
+    char centerSuit = centerCard.charAt(0);
+    for (String card : center) {
+        if (card.charAt(0) == centerSuit && compareRanks(card.charAt(1), winningCard.charAt(1)) > 0) {
+            winningCard = card;
+        }
+    }
+    return winningCard;
+    }
+    
     //compare the ranks of two cards
     public static int compareRanks(char rank1, char rank2) {
         String ranks = "23456789XJQKA";
