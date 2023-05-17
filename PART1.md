@@ -4,7 +4,7 @@
 
 No | ID         | Name | Task descriptions          | Contribution %
 -- | ---------- | ---- | -------------------------- | -------------- |
-1  | 1221302093 | Ahmad Fikri Bin Sharudin          |                |
+1  | 1221302093 | Ahmad Fikri Bin Sharudin          |       www         |
 2  | 1211104904 | Emeer Aneeq Bin Mohamad Jeffery   |                |
 3  | 1221303909 | Muhammad Ukasyah Bin MD Yusof     |                |
 
