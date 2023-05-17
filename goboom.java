@@ -44,11 +44,38 @@ public class goboom {
         System.out.println("Score: Player1 = 0 | Player2 = 0 | Player3 = 0 | Player4 = 0");
         System.out.println("Turn : Player" + currentPlayer);
         System.out.print("> ");
-            command = input.nextInt();
+        String playedCard = input.next();
+        if (players.get(currentPlayer-1).contains(playedCard)) {
+            players.get(currentPlayer-1).remove(playedCard);
+            center.add(playedCard);
+            if (center.size() == 5) 
+            {
+                center.remove(centerCard);
+                String winningCard = getWinningCard1(center, centerCard);
+                int winningPlayer = (currentPlayer + center.indexOf(winningCard)) % 4 + 1;
+                System.out.println("*** Player" + winningPlayer + " wins Trick #" + trickNumber + " ***");
+                System.out.println("Winning Card: " + winningCard);
+                centerCard = winningCard;
+                center.clear();
+                currentPlayer = winningPlayer;
+    
+                // Increment trick number
+                trickNumber++;
+            } 
             
-        } while (command != 0);
-        //area sini
+            else {
+
+                currentPlayer = (currentPlayer % 4) + 1;
+            }
+        } 
+            else {
+
+            System.out.println("You do not have this card.");
+            
+            }
+        } while (!deck.isEmpty());
     }
+
 
     //create deck
     public static List<String> createDeck() {
@@ -104,7 +131,7 @@ public class goboom {
             winningCard = card;
         }
     }
-    return winningCard;
+        return winningCard;
     }
     
     //compare the ranks of two cards
