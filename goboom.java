@@ -133,6 +133,16 @@ public class goboom {
     }
         return winningCard;
     }
+    public static String getWinningCard2(List<String> center, String leadcard) {
+        String winningCard = center.get(0);
+        char centerSuit = leadcard.charAt(0);
+        for (String card : center) {
+            if (card.charAt(0) == centerSuit && compareRanks(card.charAt(1), winningCard.charAt(1)) > 0) {
+                winningCard = card;
+            }
+        }
+        return winningCard;
+    }
     
     //compare the ranks of two cards
     public static int compareRanks(char rank1, char rank2) {
