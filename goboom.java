@@ -10,9 +10,9 @@ public class goboom {
         List<String> deck = createDeck();       //init. create deck method
         Collections.shuffle(deck);              //shuffle deck
         
-        // Assign center card
+        // Assign determinant for first turn trick #1 center card
         String centerCard = deck.remove(0);  
-        int firstPlayer = getFirstPlayer(centerCard);
+        int currentPlayer = getFirstPlayer(centerCard);
         
 
         // Deal cards to players
@@ -28,16 +28,21 @@ public class goboom {
             }
         }
 
+        List<String> center = new ArrayList<>();  //initialize center pile
+        center.add(centerCard);                   //put the center card in the center pile
+
+        int trickNumber = 1 ;
+
         int command;
         do {
-        System.out.println("Trick #1");
+        System.out.println("Trick #" + trickNumber);
         for (int i = 0; i < 4; i++) {
         System.out.println("Player" + (i+1) + ": " + players.get(i));
         }
         System.out.println("Center : [" + centerCard + "]");
         System.out.println("Deck : " + deck);
         System.out.println("Score: Player1 = 0 | Player2 = 0 | Player3 = 0 | Player4 = 0");
-        System.out.println("Turn : Player" + firstPlayer);
+        System.out.println("Turn : Player" + currentPlayer);
         System.out.print("> ");
             command = input.nextInt();
 
