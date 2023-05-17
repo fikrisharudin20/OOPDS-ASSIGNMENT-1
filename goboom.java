@@ -94,5 +94,10 @@ public class goboom {
         }
         return firstPlayer;
     }
+    //compare the ranks of two cards
+    public static int compareRanks(char rank1, char rank2) {
+        String ranks = "23456789XJQKA";
+        return ranks.indexOf(rank1) - ranks.indexOf(rank2);
+    }
     
 }
