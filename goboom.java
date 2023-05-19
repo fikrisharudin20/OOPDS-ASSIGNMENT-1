@@ -180,6 +180,12 @@ public class goboom {
 
                     default:
                     System.out.println("Input invalid! Please choose the following options given (PRESS ENTER TO CONTINUE)");
+                    try {
+                        input.nextLine(); // using your Scanner object
+                    } catch (Exception e) {
+                        System.out.println("An error occurred while waiting for input: " + e.getMessage());
+                    }
+                    break;
 
 
 
