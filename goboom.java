@@ -78,7 +78,7 @@ public class goboom {
                 break;
 
                 case "x":
-                running = false;
+                    running = false;
                     System.out.println("Closing Game...");
                     break;
 
@@ -99,8 +99,12 @@ public class goboom {
                     System.out.println("Choose a card from your hand to play");
                     System.out.print("> ");
                     String playedCard = input.next();
-                    if (players.get(currentPlayer - 1).contains(playedCard)) {
-                        players.get(currentPlayer - 1).remove(playedCard);
+                    
+                    //check if the player has the card in their hand
+                if (players.get(currentPlayer - 1).contains(playedCard)) {
+                    // Check if it's the first trick
+                    if (trickNumber == 1) {
+                        
                         center.add(playedCard);
                         if (center.size() == 5) {
                             center.remove(centerCard);
@@ -133,6 +137,11 @@ public class goboom {
 
                             currentPlayer = (currentPlayer % 4) + 1;
                         }
+
+                    }else if (trickNumber >=2){
+
+
+                    }
                     } else {
 
                         System.out.println("You do not have this card.");
