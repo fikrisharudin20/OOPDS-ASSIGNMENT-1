@@ -35,7 +35,6 @@ public class goboom {
         boolean running = true;
         String command;
         do {
-
             // Game status display
             System.out.println("Trick #" + trickNumber);
             for (int i = 0; i < 4; i++) {
@@ -50,7 +49,7 @@ public class goboom {
             System.out.println("\n--- MENU ---");
             System.out.println("s: Start a new game");
             System.out.println("x: Exit the game");
-            System.out.println("d: Draw a card from the deck");
+            System.out.println("d: Draw a card from the deck"); 
             System.out.println("card: To play a card");
             System.out.println("-------------");
             System.out.print("> ");
@@ -88,106 +87,99 @@ public class goboom {
                         players.get(currentPlayer - 1).add(newCard);
                     }
 
-                    else {
-                        System.out.println("The deck is empty");
-
+                    else  { 
+                    System.out.println("The deck is empty");
+                    
                     }
 
                     break;
 
-                case "card":
-                    System.out.println("Choose a card from your hand to play");
-                    System.out.print("> ");
-                    String playedCard = input.next();
+                    case "card":
+    System.out.println("Choose a card from your hand to play");
+    System.out.print("> ");
+    String playedCard = input.nextLine();
 
-                    // check if the player has the card in their hand
-                    if (players.get(currentPlayer - 1).contains(playedCard)) {
-                        // Check if it's the first trick
-                        if (trickNumber == 1) {
-                            // Check if the played card follows the leading card suit and rank
-                            if (center.isEmpty() || isCardSameSuitAndRank(playedCard, centerCard)) {
-                                // Remove the played card from the player's hand and add it to the center
-                                players.get(currentPlayer - 1).remove(playedCard);
-                                center.add(playedCard);
-                                System.out.println("Player" + currentPlayer + " played " + playedCard);
+    // Check if the player has the card in their hand
+    if (players.get(currentPlayer - 1).contains(playedCard)) {
+        // Check if it's the first trick
+        if (trickNumber == 1) {
+            // Check if the played card follows the leading card suit and rank
+            if (center.isEmpty() || isCardSameSuitAndRank(playedCard, centerCard)) {
+                // Remove the played card from the player's hand and add it to the center
+                players.get(currentPlayer - 1).remove(playedCard);
+                center.add(playedCard);
+                System.out.println("Player" + currentPlayer + " played " + playedCard);
 
-                                // Check if the center is complete
-                                if (center.size() == 5) {
-                                    center.remove(centerCard);
-                                    String winningCard = getWinningCard1(center, centerCard);
-                                    int winningPlayer = (currentPlayer + center.indexOf(winningCard)) % 4 + 1;
-                                    System.out.println(
-                                            "*** Player" + winningPlayer + " wins Trick #" + trickNumber + " ***");
-                                    System.out.println("Winning Card: " + winningCard);
-                                    centerCard = winningCard;
-                                    center.clear();
-                                    currentPlayer = winningPlayer;
+                // Check if the center is complete
+                if (center.size() == 5) {
+                    center.remove(centerCard);
+                    String winningCard = getWinningCard1(center, centerCard);
+                    int winningPlayer = (currentPlayer + center.indexOf(winningCard)) % 4 + 1;
+                    System.out.println("*** Player" + winningPlayer + " wins Trick #" + trickNumber + " ***");
+                    System.out.println("Winning Card: " + winningCard);
+                    centerCard = winningCard;
+                    center.clear();
+                    currentPlayer = winningPlayer;
 
-                                    // Increment trick number
-                                    trickNumber++;
+                    // Increment trick number
+                    trickNumber++;
+                } else {
+                    currentPlayer = (currentPlayer % 4) + 1;
+                }
+            } else {
+                System.out.println("The played card must follow the leading card suit and rank.");
+            }
+        } else if (trickNumber >= 2) {
+           
+            //initializing leading card
+            if (center.size() == 0){
+            players.get(currentPlayer - 1 ).remove(playedCard);
+            center.add(playedCard);
+            System.out.println("Player" + currentPlayer + " played " + playedCard);
+            currentPlayer = (currentPlayer % 4) + 1;
+            break;
+            }
+            
+            String leadcard = center.get(0);
+            
+            if (isCardSameSuitAndRank(playedCard, leadcard) && center.size() >= 1) {
+                // Remove the played card from the player's hand and add it to the center
+                players.get(currentPlayer - 1).remove(playedCard);
+                center.add(playedCard);
+                System.out.println("Player" + currentPlayer + " played " + playedCard);
 
-                                } else {
-                                    currentPlayer = (currentPlayer % 4) + 1;
-                                }
+                // Check if the center is complete
+                if (center.size() == 4) {
+                    String winningCard = getWinningCard2(center, leadcard);
+                    int winningPlayer = (currentPlayer + center.indexOf(winningCard)) % 4 + 1;
+                    System.out.println("Player" + winningPlayer + " wins Trick #" + trickNumber);
+                    System.out.println("Winning Card: " + winningCard);
+                    leadcard = winningCard;
+                    center.clear();
+                    currentPlayer = winningPlayer;
 
-                            } else {
-                                System.out.println("The played card must follow the leading card suit and rank.");
-                            }
-
-                        } else if (trickNumber >= 2) {
-                            // initialising leading card
-                            if (center.size() == 0) {
-                                players.get(currentPlayer - 1).remove(playedCard);
-                                center.add(playedCard);
-                                System.out.println("Player" + currentPlayer + " played " + playedCard);
-                                currentPlayer = (currentPlayer % 4) + 1;
-                                break;
-                            }
-
-                            String leadcard = center.get(0);
-
-                            if (isCardSameSuitAndRank(playedCard, leadcard) && center.size() >= 1) {
-                                // Remove the played card from the player's hand and add it to the center
-                                players.get(currentPlayer - 1).remove(playedCard);
-                                center.add(playedCard);
-                                System.out.println("Player" + currentPlayer + " played " + playedCard);
-
-                                // Check if the center is complete
-                                if (center.size() == 4) {
-                                    System.out.println("leading card: " + leadcard);
-                                    String winningCard = getWinningCard2(center, leadcard);
-                                    int winningPlayer = (currentPlayer + center.indexOf(winningCard)) % 4 + 1;
-                                    System.out.println(" Player" + winningPlayer + " wins Trick #" + trickNumber + " ");
-                                    System.out.println("Winning Card: " + winningCard);
-                                    leadcard = winningCard;
-                                    center.clear();
-                                    currentPlayer = winningPlayer;
-
-                                    trickNumber++;
-                                } else {
-                                    currentPlayer = (currentPlayer % 4) + 1;
-                                }
-                            } else {
-                                System.out
-                                        .println("The played card must follow the first player's card suit and rank.");
-                            }
-
-                        }
-
-                    } else {
-                        System.out.println("You do not have this card.");
-                    }
-                    break;
-
+                    trickNumber++;
+                } else {
+                    currentPlayer = (currentPlayer % 4) + 1;
+                }
+            } else {
+                System.out.println("The played card must follow the first player's card suit and rank.");
+            }
+        }
+    } else {
+        System.out.println("You do not have this card.");
+    }
+    break;
+            
                 default:
-                    System.out.println(
-                            "Input invalid! Please choose the following options given (PRESS ENTER TO CONTINUE)");
-                    try {
-                        input.nextLine(); // using your Scanner object
-                    } catch (Exception e) {
-                        System.out.println("An error occurred while waiting for input: " + e.getMessage());
-                    }
-                    break;
+                System.out.println("Input invalid! Please choose the following options given (PRESS ENTER TO CONTINUE)");
+                try {
+                    input.nextLine(); // using your Scanner object
+                } catch (Exception e) {
+                    System.out.println("An error occurred while waiting for input: " + e.getMessage());
+                }
+                break;
+                
             }
         } while (running && !deck.isEmpty());
     }
@@ -274,16 +266,15 @@ public class goboom {
         return ranks.indexOf(rank1) - ranks.indexOf(rank2);
     }
 
-    // Method to check if the played card follows the first player's card suit and
-    // rank
+    // Method to check if the played card follows the first player's card suit and rank
     private static boolean isCardSameSuitAndRank(String playedCard, String firstPlayerCard) {
         String playedSuit = playedCard.substring(0, 1);
         String playedRank = playedCard.substring(1);
         String firstPlayerSuit = firstPlayerCard.substring(0, 1);
         String firstPlayerRank = firstPlayerCard.substring(1);
-
+    
         // Compare the suits and ranks
-        return playedSuit.equals(firstPlayerSuit) || playedRank.equals(firstPlayerRank);
-    }
+        return playedSuit.equals(firstPlayerSuit) ||  playedRank.equals(firstPlayerRank);
+    }   
 
 }
