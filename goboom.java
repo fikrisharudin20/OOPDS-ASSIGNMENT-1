@@ -104,7 +104,7 @@ public class goboom {
         // Check if it's the first trick
         if (trickNumber == 1) {
             // Check if the played card follows the leading card suit and rank
-            if (center.isEmpty() || isCardSameSuitAndRank(playedCard, centerCard)) {
+            if (center.isEmpty() || isCardSameSuitOrRank(playedCard, centerCard)) {
                 // Remove the played card from the player's hand and add it to the center
                 players.get(currentPlayer - 1).remove(playedCard);
                 center.add(playedCard);
@@ -142,7 +142,7 @@ public class goboom {
             
             String leadcard = center.get(0);
             
-            if (isCardSameSuitAndRank(playedCard, leadcard) && center.size() >= 1) {
+            if (isCardSameSuitOrRank(playedCard, leadcard) && center.size() >= 1) {
                 // Remove the played card from the player's hand and add it to the center
                 players.get(currentPlayer - 1).remove(playedCard);
                 center.add(playedCard);
@@ -266,8 +266,8 @@ public class goboom {
         return ranks.indexOf(rank1) - ranks.indexOf(rank2);
     }
 
-    // Method to check if the played card follows the first player's card suit and rank
-    private static boolean isCardSameSuitAndRank(String playedCard, String firstPlayerCard) {
+    // Method to check if the played card follows the first player's card suit or rank
+    private static boolean isCardSameSuitOrRank(String playedCard, String firstPlayerCard) {
         String playedSuit = playedCard.substring(0, 1);
         String playedRank = playedCard.substring(1);
         String firstPlayerSuit = firstPlayerCard.substring(0, 1);
