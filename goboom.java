@@ -224,5 +224,15 @@ public class goboom {
         String ranks = "23456789XJQKA";
         return ranks.indexOf(rank1) - ranks.indexOf(rank2);
     }
+    // Method to check if the played card follows the first player's card suit and rank
+    private static boolean isCardSameSuitAndRank(String playedCard, String firstPlayerCard) {
+        String playedSuit = playedCard.substring(0, 1);
+        String playedRank = playedCard.substring(1);
+        String firstPlayerSuit = firstPlayerCard.substring(0, 1);
+        String firstPlayerRank = firstPlayerCard.substring(1);
+
+        // Compare the suits and ranks
+        return playedSuit.equals(firstPlayerSuit) ||  playedRank.equals(firstPlayerRank);
+    }
 
 }
