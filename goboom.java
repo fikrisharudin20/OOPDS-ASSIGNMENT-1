@@ -7,13 +7,12 @@ import java.util.Scanner;
 public class goboom {
     public static void main(String[] args) {
         Scanner input = new Scanner(System.in);
-        List<String> deck = createDeck();       //init. create deck method
-        Collections.shuffle(deck);              //shuffle deck
-        
+        List<String> deck = createDeck(); // init. create deck method
+        Collections.shuffle(deck); // shuffle deck
+
         // Assign determinant for first turn trick #1 center card
-        String centerCard = deck.remove(0);  
+        String centerCard = deck.remove(0);
         int currentPlayer = getFirstPlayer(centerCard);
-        
 
         // Deal cards to players
         List<List<String>> players = new ArrayList<>();
@@ -21,21 +20,21 @@ public class goboom {
             players.add(new ArrayList<>());
         }
 
-         //distributes cards from deck to each player
-         for (int i = 0; i < 7; i++) {
+        // distributes cards from deck to each player
+        for (int i = 0; i < 7; i++) {
             for (int j = 0; j < 4; j++) {
                 players.get(j).add(deck.remove(0));
             }
         }
 
-        List<String> center = new ArrayList<>();  //initialize center pile
-        center.add(centerCard);                   //put the center card in the center pile
+        List<String> center = new ArrayList<>(); // initialize center pile
+        center.add(centerCard); // put the center card in the center pile
 
-        int trickNumber = 1 ;
+        int trickNumber = 1;
 
         boolean running = true;
         String command;
-     do {
+        do {
 
             // Game status display
             System.out.println("Trick #" + trickNumber);
@@ -51,18 +50,34 @@ public class goboom {
             System.out.println("\n--- MENU ---");
             System.out.println("s: Start a new game");
             System.out.println("x: Exit the game");
-            System.out.println("d: Draw a card from the deck"); 
+            System.out.println("d: Draw a card from the deck");
             System.out.println("card: To play a card");
             System.out.println("-------------");
             System.out.print("> ");
             command = input.nextLine();
-            
+
             switch (command) {
                 case "s":
-                    
+                // Reset everything
+                deck = createDeck();
+                Collections.shuffle(deck);
+                centerCard = deck.remove(0);
+                currentPlayer = getFirstPlayer(centerCard);
+                players.clear();
+                for (int i = 0; i < 4; i++) {
+                    players.add(new ArrayList<>());
+                }
+                for (int i = 0; i < 7; i++) {
+                    for (int j = 0; j < 4; j++) {
+                        players.get(j).add(deck.remove(0));
+                    }
+                }
+                center.clear();
+                center.add(centerCard);
+                trickNumber = 1;
+                break;
 
                 case "x":
-                    
 
                 case "d":
                     if (deck.size() > 0) {
@@ -70,70 +85,65 @@ public class goboom {
                         players.get(currentPlayer - 1).add(newCard);
                     }
 
-                    else  { 
-                    System.out.println("The deck is empty");
-                    
+                    else {
+                        System.out.println("The deck is empty");
+
                     }
 
                     break;
 
-                    case "card":
-        System.out.println("Choose a card from your hand to play");
-        System.out.print("> ");
-        String playedCard = input.next();
-        if (players.get(currentPlayer-1).contains(playedCard)) {
-            players.get(currentPlayer-1).remove(playedCard);
-            center.add(playedCard);
-            if (center.size() == 5) 
-            {
-                center.remove(centerCard);
-                String winningCard = getWinningCard1(center, centerCard);
-                int winningPlayer = (currentPlayer + center.indexOf(winningCard)) % 4 + 1;
-                System.out.println("*** Player" + winningPlayer + " wins Trick #" + trickNumber + " ***");
-                System.out.println("Winning Card: " + winningCard);
-                centerCard = winningCard;
-                center.clear();
-                currentPlayer = winningPlayer;
-    
-                // Increment trick number
-                trickNumber++;
-            } 
-            else if (center.size() == 4 && trickNumber >= 2)
-               {
-                //leading card for trick 2 and above
-                 String leadcard = center.get(0);
-                 System.out.println("leading card: " + leadcard);
-                String winningCard = getWinningCard2(center, leadcard);
-                int winningPlayer = (currentPlayer + center.indexOf(winningCard)) % 4 + 1;
-                System.out.println(" Player" + winningPlayer + " wins Trick #" + trickNumber + " ");
-                System.out.println("Winning Card: " + winningCard);
-                leadcard = winningCard;
-                center.clear();
-                currentPlayer = winningPlayer;
+                case "card":
+                    System.out.println("Choose a card from your hand to play");
+                    System.out.print("> ");
+                    String playedCard = input.next();
+                    if (players.get(currentPlayer - 1).contains(playedCard)) {
+                        players.get(currentPlayer - 1).remove(playedCard);
+                        center.add(playedCard);
+                        if (center.size() == 5) {
+                            center.remove(centerCard);
+                            String winningCard = getWinningCard1(center, centerCard);
+                            int winningPlayer = (currentPlayer + center.indexOf(winningCard)) % 4 + 1;
+                            System.out.println("*** Player" + winningPlayer + " wins Trick #" + trickNumber + " ***");
+                            System.out.println("Winning Card: " + winningCard);
+                            centerCard = winningCard;
+                            center.clear();
+                            currentPlayer = winningPlayer;
 
-                trickNumber++;
-               }
-            
-            else {
+                            // Increment trick number
+                            trickNumber++;
+                        } else if (center.size() == 4 && trickNumber >= 2) {
+                            // leading card for trick 2 and above
+                            String leadcard = center.get(0);
+                            System.out.println("leading card: " + leadcard);
+                            String winningCard = getWinningCard2(center, leadcard);
+                            int winningPlayer = (currentPlayer + center.indexOf(winningCard)) % 4 + 1;
+                            System.out.println(" Player" + winningPlayer + " wins Trick #" + trickNumber + " ");
+                            System.out.println("Winning Card: " + winningCard);
+                            leadcard = winningCard;
+                            center.clear();
+                            currentPlayer = winningPlayer;
 
-                currentPlayer = (currentPlayer % 4) + 1;
+                            trickNumber++;
+                        }
+
+                        else {
+
+                            currentPlayer = (currentPlayer % 4) + 1;
+                        }
+                    } else {
+
+                        System.out.println("You do not have this card.");
+
+                    }
             }
-        } 
-            else {
-
-            System.out.println("You do not have this card.");
-            
-            }
-          }
         } while (running && !deck.isEmpty());
     }
 
-
-    //create deck
+    // create deck
     public static List<String> createDeck() {
         List<String> deck = new ArrayList<>();
-        String[] suits = {"c", "d", "h", "s"};
-        String[] ranks = {"2", "3", "4", "5", "6", "7", "8", "9", "X", "J", "Q", "K", "A"};
+        String[] suits = { "c", "d", "h", "s" };
+        String[] ranks = { "2", "3", "4", "5", "6", "7", "8", "9", "X", "J", "Q", "K", "A" };
 
         for (String suit : suits) {
             for (String rank : ranks) {
@@ -144,7 +154,7 @@ public class goboom {
         return deck;
     }
 
-    //firstplayer method
+    // firstplayer method
     public static int getFirstPlayer(String card) {
         int firstPlayer = 0;
         char rank = card.charAt(1);
@@ -174,18 +184,18 @@ public class goboom {
         return firstPlayer;
     }
 
-    //get the winning card from the center pile for first trick
+    // get the winning card from the center pile for first trick
     public static String getWinningCard1(List<String> center, String centerCard) {
-    String winningCard = center.get(0);
-    char centerSuit = centerCard.charAt(0);
-    for (String card : center) {
-        if (card.charAt(0) == centerSuit && compareRanks(card.charAt(1), winningCard.charAt(1)) > 0) {
-            winningCard = card;
+        String winningCard = center.get(0);
+        char centerSuit = centerCard.charAt(0);
+        for (String card : center) {
+            if (card.charAt(0) == centerSuit && compareRanks(card.charAt(1), winningCard.charAt(1)) > 0) {
+                winningCard = card;
+            }
         }
-    }
         return winningCard;
     }
-    
+
     public static String getWinningCard2(List<String> center, String leadcard) {
         String winningCard = center.get(0);
         char centerSuit = leadcard.charAt(0);
@@ -196,11 +206,11 @@ public class goboom {
         }
         return winningCard;
     }
-    
-    //compare the ranks of two cards
+
+    // compare the ranks of two cards
     public static int compareRanks(char rank1, char rank2) {
         String ranks = "23456789XJQKA";
         return ranks.indexOf(rank1) - ranks.indexOf(rank2);
     }
-    
+
 }
