@@ -57,6 +57,27 @@ public class goboom {
             System.out.print("> ");
             command = input.nextLine();
             
+            switch (command) {
+                case "s":
+                    
+
+                case "x":
+                    
+
+                case "d":
+                    if (deck.size() > 0) {
+                        String newCard = deck.remove(0);
+                        players.get(currentPlayer - 1).add(newCard);
+                    }
+
+                    else  { 
+                    System.out.println("The deck is empty");
+                    
+                    }
+
+                    break;
+
+                    case "card":
         System.out.println("Choose a card from your hand to play");
         System.out.print("> ");
         String playedCard = input.next();
@@ -103,6 +124,7 @@ public class goboom {
             System.out.println("You do not have this card.");
             
             }
+          }
         } while (running && !deck.isEmpty());
     }
 
