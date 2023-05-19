@@ -78,6 +78,9 @@ public class goboom {
                 break;
 
                 case "x":
+                running = false;
+                    System.out.println("Closing Game...");
+                    break;
 
                 case "d":
                     if (deck.size() > 0) {
