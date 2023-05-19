@@ -237,11 +237,17 @@ public class goboom {
 
     // get the winning card from the center pile for first trick
     public static String getWinningCard1(List<String> center, String centerCard) {
-        String winningCard = center.get(0);
+        String winningCard = null;
         char centerSuit = centerCard.charAt(0);
+
+        // Filter for cards that have the same suit as the centerCard
         for (String card : center) {
-            if (card.charAt(0) == centerSuit && compareRanks(card.charAt(1), winningCard.charAt(1)) > 0) {
-                winningCard = card;
+            if (card.charAt(0) == centerSuit) {
+                // If this is the first card with the correct suit or if it has a higher rank
+                // than the current winning card
+                if (winningCard == null || compareRanks(card.charAt(1), winningCard.charAt(1)) > 0) {
+                    winningCard = card;
+                }
             }
         }
         return winningCard;
