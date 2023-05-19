@@ -133,9 +133,18 @@ public class goboom {
                                 System.out.println("The played card must follow the leading card suit and rank.");
                             }
 
-                        } else if (center.size() == 4 && trickNumber >= 2) {
-                            // leading card for trick 2 and above
-                            String leadcard = center.get(0);
+                        } else if (trickNumber >= 2) {
+                            //initialising leading card
+                            if (center.size() == 0){
+                                players.get(currentPlayer - 1 ).remove(playedCard);
+                                center.add(playedCard);
+                                System.out.println("Player" + currentPlayer + " played " + playedCard);
+                                currentPlayer = (currentPlayer % 4) + 1;
+                                break;
+                                }
+
+                                String leadcard = center.get(0);
+                            
                             System.out.println("leading card: " + leadcard);
                             String winningCard = getWinningCard2(center, leadcard);
                             int winningPlayer = (currentPlayer + center.indexOf(winningCard)) % 4 + 1;
