@@ -153,7 +153,7 @@ public class goboom {
                                 System.out.println("Player" + currentPlayer + " played " + playedCard);
 
                                 //Check if the center is complete
-                                if (center.size() == 4) {
+                             if (center.size() == 4) {
                                 System.out.println("leading card: " + leadcard);
                                 String winningCard = getWinningCard2(center, leadcard);
                                 int winningPlayer = (currentPlayer + center.indexOf(winningCard)) % 4 + 1;
@@ -186,11 +186,6 @@ public class goboom {
                         System.out.println("An error occurred while waiting for input: " + e.getMessage());
                     }
                     break;
-
-
-
-
-
             }
         } while (running && !deck.isEmpty());
     }
