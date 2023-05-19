@@ -152,34 +152,36 @@ public class goboom {
                                 center.add(playedCard);
                                 System.out.println("Player" + currentPlayer + " played " + playedCard);
 
-                                //Check if the center is complete
-                             if (center.size() == 4) {
-                                System.out.println("leading card: " + leadcard);
-                                String winningCard = getWinningCard2(center, leadcard);
-                                int winningPlayer = (currentPlayer + center.indexOf(winningCard)) % 4 + 1;
-                                System.out.println(" Player" + winningPlayer + " wins Trick #" + trickNumber + " ");
-                                System.out.println("Winning Card: " + winningCard);
-                                leadcard = winningCard;
-                                center.clear();
-                                currentPlayer = winningPlayer;
+                                // Check if the center is complete
+                                if (center.size() == 4) {
+                                    System.out.println("leading card: " + leadcard);
+                                    String winningCard = getWinningCard2(center, leadcard);
+                                    int winningPlayer = (currentPlayer + center.indexOf(winningCard)) % 4 + 1;
+                                    System.out.println(" Player" + winningPlayer + " wins Trick #" + trickNumber + " ");
+                                    System.out.println("Winning Card: " + winningCard);
+                                    leadcard = winningCard;
+                                    center.clear();
+                                    currentPlayer = winningPlayer;
 
-                                trickNumber++;
+                                    trickNumber++;
+                                } else {
+                                    currentPlayer = (currentPlayer % 4) + 1;
+                                }
                             } else {
-                                currentPlayer = (currentPlayer % 4) + 1;
+                                System.out
+                                        .println("The played card must follow the first player's card suit and rank.");
                             }
-                        } else {
-                            System.out.println("The played card must follow the first player's card suit and rank.");
+
                         }
 
-                    } 
-
-                 } else {
+                    } else {
                         System.out.println("You do not have this card.");
                     }
                     break;
 
-                    default:
-                    System.out.println("Input invalid! Please choose the following options given (PRESS ENTER TO CONTINUE)");
+                default:
+                    System.out.println(
+                            "Input invalid! Please choose the following options given (PRESS ENTER TO CONTINUE)");
                     try {
                         input.nextLine(); // using your Scanner object
                     } catch (Exception e) {
@@ -254,11 +256,13 @@ public class goboom {
     }
 
     public static String getWinningCard2(List<String> center, String leadcard) {
-        String winningCard = center.get(0);
-        char centerSuit = leadcard.charAt(0);
+        String winningCard = null;
+        char leadSuit = leadcard.charAt(0);
         for (String card : center) {
-            if (card.charAt(0) == centerSuit && compareRanks(card.charAt(1), winningCard.charAt(1)) > 0) {
-                winningCard = card;
+            if (card.charAt(0) == leadSuit) {
+                if (winningCard == null || compareRanks(card.charAt(1), winningCard.charAt(1)) > 0) {
+                    winningCard = card;
+                }
             }
         }
         return winningCard;
