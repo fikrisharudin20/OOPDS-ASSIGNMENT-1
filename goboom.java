@@ -152,6 +152,8 @@ public class goboom {
                                 center.add(playedCard);
                                 System.out.println("Player" + currentPlayer + " played " + playedCard);
 
+                                //Check if the center is complete
+                                if (center.size() == 4) {
                                 System.out.println("leading card: " + leadcard);
                                 String winningCard = getWinningCard2(center, leadcard);
                                 int winningPlayer = (currentPlayer + center.indexOf(winningCard)) % 4 + 1;
@@ -162,23 +164,27 @@ public class goboom {
                                 currentPlayer = winningPlayer;
 
                                 trickNumber++;
-                            }
-
-                            else {
-
+                            } else {
                                 currentPlayer = (currentPlayer % 4) + 1;
                             }
                         } else {
                             System.out.println("The played card must follow the first player's card suit and rank.");
                         }
 
-                    } else if (trickNumber >= 2) {
+                    } 
 
-                    } else {
-
+                 } else {
                         System.out.println("You do not have this card.");
-
                     }
+                    break;
+
+                    default:
+                    System.out.println("Input invalid! Please choose the following options given (PRESS ENTER TO CONTINUE)");
+
+
+
+
+
             }
         } while (running && !deck.isEmpty());
     }
