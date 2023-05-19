@@ -11,19 +11,17 @@ Go Boom is a card game played with a standard deck of 52 cards. The objective of
 
 2. Gameplay: The player with the first lead card starts the game.
 
-3. Taking Turns: On your turn, you must play a card that matches either the rank or the suit of the card on top of the discard pile. If you cannot play a matching card, you must draw cards from the deck until you obtain a playable card. If the deck is empty, move to the next player.
+3. Taking Turns: On your turn, you must play a card that matches either the rank or the suit of the card on top of the center pile. If you cannot play a matching card, you must draw cards from the deck until you obtain a playable card. If the deck is empty, move to the next player.
 
-4. Playing a Card: To play a card, simply type the card's code or name. For example, "s3" represents the 3 of Spades. If the card is playable, it is added to the discard pile.
+4. Playing a Card: To play a card, simply type in "card" and press enter. After that, card's code or name. For example, "s3" represents the 3 of Spades. If the card is playable, it is added to the discard pile.
 
-5. Go Boom: If you play an 8, you can choose a suit that the next player must match. For example, if you play an 8 and choose hearts, the next player must play a heart card or another 8. If they cannot, they must draw cards until they get a playable card.
+5. Winning a Trick: A trick is won by playing the highest-ranked card with the same suit as the lead card. The winner of a trick leads the next card.
 
-6. Winning a Trick: A trick is won by playing the highest-ranked card with the same suit as the lead card. The winner of a trick leads the next card.
+6. Winning the Game: The first player to get rid of all their cards is the winner. The game continues until only one player has cards remaining.
 
-7. Winning the Game: The first player to get rid of all their cards is the winner. The game continues until only one player has cards remaining.
+7. Scorekeeping: You can keep track of the score by assigning points to each player based on the number of cards they have at the end of each round. The player with the fewest cards receives the fewest points.
 
-8. Scorekeeping: You can keep track of the score by assigning points to each player based on the number of cards they have at the end of each round. The player with the fewest cards receives the fewest points.
-
-9. New Game: You can start a new game by typing "s" at any time.
+8. New Game: You can start a new game by typing "s" at any time.
 That's the basic gameplay of Go Boom! Remember to follow the rules and have fun playing with your friends or family.
 
 # Features
