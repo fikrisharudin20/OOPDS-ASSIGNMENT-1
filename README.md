@@ -47,7 +47,9 @@ That's the basic gameplay of Go Boom! Remember to follow the rules and have fun 
 The game supports the following commands:
 
 s - Start a new game.
+
 x - Exit the game.
+
 d - Draw cards from the deck until a playable card is obtained. If the deck is empty, skip to the next player.
 card - A card played by the current player.
 
