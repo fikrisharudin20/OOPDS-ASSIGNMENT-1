@@ -104,8 +104,14 @@ public class goboom {
                 if (players.get(currentPlayer - 1).contains(playedCard)) {
                     // Check if it's the first trick
                     if (trickNumber == 1) {
-                        
+                        // Check if the played card follows the leading card suit and rank
+                        if (center.isEmpty() || isCardSameSuitAndRank(playedCard, centerCard)) {
+                        // Remove the played card from the player's hand and add it to the center
+                        players.get(currentPlayer - 1).remove(playedCard);
                         center.add(playedCard);
+                        System.out.println("Player" + currentPlayer + " played " + playedCard);
+
+                        // Check if the center is complete
                         if (center.size() == 5) {
                             center.remove(centerCard);
                             String winningCard = getWinningCard1(center, centerCard);
@@ -117,7 +123,16 @@ public class goboom {
                             currentPlayer = winningPlayer;
 
                             // Increment trick number
-                            trickNumber++;
+                             trickNumber++;
+
+                         } else {
+                                currentPlayer = (currentPlayer % 4) + 1;
+                            }
+
+                         } else {
+                                System.out.println("The played card must follow the leading card suit and rank.");
+                            }
+
                         } else if (center.size() == 4 && trickNumber >= 2) {
                             // leading card for trick 2 and above
                             String leadcard = center.get(0);
@@ -141,7 +156,7 @@ public class goboom {
                     }else if (trickNumber >=2){
 
 
-                    }
+                    
                     } else {
 
                         System.out.println("You do not have this card.");
@@ -224,6 +239,7 @@ public class goboom {
         String ranks = "23456789XJQKA";
         return ranks.indexOf(rank1) - ranks.indexOf(rank2);
     }
+
     // Method to check if the played card follows the first player's card suit and rank
     private static boolean isCardSameSuitAndRank(String playedCard, String firstPlayerCard) {
         String playedSuit = playedCard.substring(0, 1);
