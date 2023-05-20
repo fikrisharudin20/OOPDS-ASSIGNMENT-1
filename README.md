@@ -51,7 +51,8 @@ s - Start a new game.
 x - Exit the game.
 
 d - Draw cards from the deck until a playable card is obtained. If the deck is empty, skip to the next player.
-card - A card played by the current player.
+
+card - A card played by the current player. Then, the card you want to play, for example s3
 
 # Getting Started
 To run the Go Boom game, follow these steps:
