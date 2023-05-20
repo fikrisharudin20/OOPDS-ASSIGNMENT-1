@@ -30,13 +30,13 @@ That's the basic gameplay of Go Boom! Remember to follow the rules and have fun 
 3. The first card in the deck becomes the first lead card and is placed at the center.
 4. The first lead card determines the first player:
 
-      a. A, 5, 9, K for Player 1
+      a.  A, 5, 9, K for Player 1
       
-      b. 2, 6, 10 for Player 2
+      b.  2, 6, 10 for Player 2
       
-      c. 3, 7, J for Player 3
+      c.  3, 7, J for Player 3
       
-      d. 4, 8, Q for Player 4
+      d.  4, 8, Q for Player 4
       
 5. Each player is dealt 7 cards.
 6. All players must follow the suit or rank of the lead card.
@@ -51,7 +51,8 @@ s - Start a new game.
 x - Exit the game.
 
 d - Draw cards from the deck until a playable card is obtained. If the deck is empty, skip to the next player.
-card - A card played by the current player.
+
+card - A card played by the current player. Then, the card you want to play, for example s3
 
 # Getting Started
 To run the Go Boom game, follow these steps:
