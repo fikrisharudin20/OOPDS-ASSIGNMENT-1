@@ -58,6 +58,8 @@ card - A card played by the current player. Then, the card you want to play, for
 To run the Go Boom game, follow these steps:
 
 a. Clone the repository or download the source code.
+
 b. Compile the Java files: javac *.java
+
 c. Run the game: java GoBoomGame.
 
