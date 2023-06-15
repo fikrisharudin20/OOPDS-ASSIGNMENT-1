@@ -87,6 +87,7 @@ public class goboom {
                 
                 case "s":
                     // Reset everything
+                    System.out.println("Game Reset!");
                     deck = createDeck();
                     Collections.shuffle(deck);
                     centerCard = deck.remove(0);
@@ -115,10 +116,26 @@ public class goboom {
                         String newCard = deck.remove(0);
                         players.get(currentPlayer - 1).add(newCard);
                     }
-
                     else  { 
                     System.out.println("The deck is empty");
                     
+                    System.out.println("The deck is empty");
+                        boolean hasValidCard = false;
+
+                        // Check if the current player has a valid card to play
+                        for (String card : players.get(currentPlayer - 1)) {
+                            if (isCardSameSuitOrRank(card, centerCard)) {
+                                hasValidCard = true;
+                                break;
+                            }
+                        }
+
+                        if (!hasValidCard) {
+                            System.out.println(
+                                    "Player" + currentPlayer + " does not have a valid card to play. Skipping turn.");
+                            currentPlayer = (currentPlayer % 4) + 1;
+                            break;
+                        }
                     }
 
                     break;
