@@ -239,9 +239,27 @@ public class goboom {
                 players.get(currentPlayer - 1).remove(playedCard);
                 center.add(playedCard);
                 System.out.println("Player" + currentPlayer + " played " + playedCard);
+                        for (int i = 0; i < 4; i++) {
+                                        if (players.get(i).isEmpty()) {
+                                            System.out.println(
+                                                    "Player" + (i + 1) + " has no more cards. The game is over.");
 
+                                            // Calculate points and print the table
+                                            System.out.println("+---------+--------+");
+                                            System.out.println("| Player  | Points |");
+                                            System.out.println("+---------+--------+");
+                                            for (int j = 0; j < 4; j++) {
+                                                int points = calculatePoints(players.get(j));
+                                                System.out.println("| Player" + (j + 1) + " | " + points + "    |");
+                                            }
+                                            System.out.println("+---------+--------+");
+
+                                            running = false;
+                                            break;
+                                        }
+                                    }
                 // Check if the center is complete
-                if (center.size() == 4) {
+                if (center.size() == 4 || turnsPlayed == 3) {
                     String winningCard = getWinningCard2(center, leadcard);
                     int winningPlayer = (currentPlayer + center.indexOf(winningCard)) % 4 + 1;
                     System.out.println("Player" + winningPlayer + " wins Trick #" + trickNumber);
