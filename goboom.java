@@ -370,5 +370,26 @@ public class goboom {
         // Compare the suits and ranks
         return playedSuit.equals(firstPlayerSuit) ||  playedRank.equals(firstPlayerRank);
     }   
+    public static int calculatePoints(List<String> playerHand) {
+        int points = 0;
+        for (String card : playerHand) {
+            char rank = card.charAt(1);
+            switch (rank) {
+                case 'A':
+                    points += 1;
+                    break;
+                case 'J':
+                case 'Q':
+                case 'K':
+                case 'X':
+                    points += 10;
+                    break;
+                default:
+                    points += Character.getNumericValue(rank);
+                    break;
+            }
+        }
+        return points;
+    }
 
 }
