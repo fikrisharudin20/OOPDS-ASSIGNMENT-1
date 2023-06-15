@@ -1,3 +1,8 @@
+import java.io.FileInputStream;
+import java.io.FileOutputStream;
+import java.io.IOException;
+import java.io.ObjectInputStream;
+import java.io.ObjectOutputStream;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
@@ -139,6 +144,48 @@ public class goboom {
                     }
 
                     break;
+                    case "save":
+                    try {
+                        GameState gameState = new GameState();
+                        gameState.deck = new ArrayList<>(deck);
+                        gameState.players = new ArrayList<>(players);
+                        gameState.center = new ArrayList<>(center);
+                        gameState.centerCard = centerCard;
+                        gameState.currentPlayer = currentPlayer;
+                        gameState.trickNumber = trickNumber;
+
+                        FileOutputStream fos = new FileOutputStream("gameState.dat");
+                        ObjectOutputStream oos = new ObjectOutputStream(fos);
+                        oos.writeObject(gameState);
+                        oos.close();
+
+                        System.out.println("Game saved.");
+                    } catch (IOException e) {
+                        System.out.println("An error occurred while saving the game: " + e.getMessage());
+                    }
+                    break;
+
+                case "load":
+                    try {
+                        FileInputStream fis = new FileInputStream("gameState.dat");
+                        ObjectInputStream ois = new ObjectInputStream(fis);
+                        GameState gameState = (GameState) ois.readObject();
+                        ois.close();
+
+                        deck = gameState.deck;
+                        players = gameState.players;
+                        center = gameState.center;
+                        centerCard = gameState.centerCard;
+                        currentPlayer = gameState.currentPlayer;
+                        trickNumber = gameState.trickNumber;
+
+                        System.out.println("Game loaded.");
+                    } catch (IOException | ClassNotFoundException e) {
+                        System.out.println("An error occurred while loading the game: " + e.getMessage());
+                    }
+                    break;
+
+                    
 
                     case "card":
     System.out.println("Choose a card from your hand to play");
