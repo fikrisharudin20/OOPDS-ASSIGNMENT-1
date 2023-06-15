@@ -42,6 +42,7 @@ public class goboom {
         System.out.println("sk: Skip your turn");
         System.out.println("-----------------");
 
+        int turnsPlayed = 0;
         boolean running = true;
         String command;
         do {
@@ -59,6 +60,31 @@ public class goboom {
             command = input.nextLine();
 
             switch (command) {
+                
+                case "sk":
+                    // Skip the player's turn
+                    System.out.println("Player" + currentPlayer + " skips their turn.");
+
+                    currentPlayer = (currentPlayer % 4) + 1;
+                    turnsPlayed++;
+                    System.out.println("Turns Played" + turnsPlayed);
+
+                    if (turnsPlayed == 4) {
+                        // Calculate the winning card for the center
+                        String winningCard = getWinningCard1(center, centerCard);
+                        int winningPlayer = (currentPlayer + center.indexOf(winningCard)) % 4 + 1;
+                        System.out.println("*** Player" + winningPlayer + " wins Trick #" + trickNumber + " ***");
+                        System.out.println("Winning Card: " + winningCard);
+                        centerCard = winningCard;
+                        center.clear();
+                        currentPlayer = winningPlayer;
+                        turnsPlayed = 0;
+
+                        // Increment trick number
+                        trickNumber++;
+                    }
+                    break;
+                
                 case "s":
                     // Reset everything
                     deck = createDeck();
