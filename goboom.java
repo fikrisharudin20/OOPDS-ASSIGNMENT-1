@@ -123,8 +123,6 @@ public class goboom {
                     }
                     else  { 
                     System.out.println("The deck is empty");
-                    
-                    System.out.println("The deck is empty");
                         boolean hasValidCard = false;
 
                         // Check if the current player has a valid card to play
@@ -144,6 +142,7 @@ public class goboom {
                     }
 
                     break;
+
                     case "save":
                     try {
                         GameState gameState = new GameState();
@@ -184,8 +183,6 @@ public class goboom {
                         System.out.println("An error occurred while loading the game: " + e.getMessage());
                     }
                     break;
-
-                    
 
                     case "card":
     System.out.println("Choose a card from your hand to play");
