@@ -54,6 +54,12 @@ d - Draw cards from the deck until a playable card is obtained. If the deck is e
 
 card - A card played by the current player. Then, the card you want to play, for example s3
 
+sk - The player will skip their turn to play a card
+
+save - saving current game 
+
+load - load previous saved game
+
 # Getting Started
 To run the Go Boom game, follow these steps:
 
