@@ -2,12 +2,12 @@
 
 ## A. Member Contributions
 
-No | ID         | Name                          | Task descriptions | Contribution %
--- | ---------- | ----------------------------  | ----------------- | --------------
-1  | 1221302093 | Ahmad Fikri Bin Sharudin      |                   |
-2  | 1221303909 | Muhammad Ukasyah Bin MD Yusof |                   |
-3  |            |                               |                   |
-4  |            |                               |                   |
+No | ID         | Name                          | Task descriptions                                           | Contribution %
+-- | ---------- | ----------------------------  | ----------------------------------------------------------- | --------------
+1  | 1221302093 | Ahmad Fikri Bin Sharudin      | Main Menu, Initializing Player Turns, Skip Turn Function    |       50%
+2  | 1221303909 | Muhammad Ukasyah Bin MD Yusof | Saving And Loading, Counting Points Method, Point System    |       50%
+3  |            |                               |                                                             |
+4  |            |                               |                                                             |
 
 
 ## B. Part 1 Feature Completion (Latest)
