@@ -1,7 +1,6 @@
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
-import java.util.Random;
 import java.util.Scanner;
 
 public class goboom {
@@ -32,6 +31,17 @@ public class goboom {
 
         int trickNumber = 1;
 
+        // Menu
+        System.out.println("\n--- MAIN MENU ---");
+        System.out.println("s: Start a new game");
+        System.out.println("x: Exit the game");
+        System.out.println("d: Draw a card from the deck");
+        System.out.println("card: To play a card");
+        System.out.println("load: Load a game from previous save");
+        System.out.println("save: Save a game");
+        System.out.println("sk: Skip your turn");
+        System.out.println("-----------------");
+
         boolean running = true;
         String command;
         do {
@@ -44,13 +54,6 @@ public class goboom {
             System.out.println("Deck : " + deck);
             System.out.println("Score: Player1 = 0 | Player2 = 0 | Player3 = 0 | Player4 = 0");
             System.out.println("Turn : Player" + currentPlayer);
-
-            // Menu
-            System.out.println("\n--- MENU ---");
-            System.out.println("s: Start a new game");
-            System.out.println("x: Exit the game");
-            System.out.println("d: Draw a card from the deck"); 
-            System.out.println("card: To play a card");
             System.out.println("-------------");
             System.out.print("> ");
             command = input.nextLine();
